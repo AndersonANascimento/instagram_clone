@@ -1,0 +1,88 @@
+{
+	nome: "Anderson",
+	idade: 43,
+	sexo: 'M',
+	cpf: '456.125.362-91',
+	rg: '1081186-9',
+	matricula: 'P000994'
+}
+
+{ 
+	nome: "Maria" , 
+	idade: 25, 
+	sexo: 'F',  
+	matricula: 'uio123' 
+}
+
+{ 
+	nome: "Fernanda", 
+	idade: 32, 
+	sexo: 'F', 
+	matricula: 'P001994', 
+	cursos_interesse: [
+		{curso: 'Curso Completo de Desenolvedor Node.js'},
+		{curso: 'Curso Completo de Desenvolvedor WEB'}
+	]
+}
+
+// update ex1
+{nome: 'Anderson'}, {$set: {nome: 'Tchuka'}}
+// update ex2
+{sexo: 'F'}, {$set: {sexo: 'Feminino'}}, {multi: true}
+// update ex3
+{nome: 'Maria'}, {$set: {sexo: 'F', idade: 26}}
+// save ex1
+{
+        "_id" : ObjectId("5a78763053a39d17acb309d9"),
+        "nome" : "Anderson",
+        "idade" : 43,
+        "sexo" : "M",
+        "cpf" : "456.125.362-91",
+        "rg" : "1081186-9",
+        "matricula" : "994-6A"
+}
+// remove ex1
+{nome: 'Maria'}
+// remove ex2
+{idade: {$gt: 30}}
+
+// Exercício de Fixação
+> show dbs;
+> use biblioteca;
+> db.createCollection("livros")
+> db.livros.insertMany([
+	{
+		titulo: 'Introdução a linguagem de marcação HTML',
+		valor: 25.00,
+		autor: 'João'
+	},
+	{
+		titulo: 'NodeJS do básico ao avançado',
+		valor: 280.00,
+		autor: 'Jorge'
+	},
+	{
+		titulo: 'Android - criando apps reais',
+		valor: 290.00,
+		autor: 'Jamilton'
+	},
+	{
+		titulo: 'PHP e MySQL',
+		valor: 190.00,
+		autor: 'Fernando'
+	},
+	{
+		titulo: 'Lógica de Programação',
+		valor: 20.00,
+		autor: 'Maria'
+	}])
+> db.livros.find({valor: {$gt: 200.00}})
+> db.livros.find({valor: {$gt: 10.00}, valor: {$lt: 30.00}})
+> db.livros.find({autor: {$ne: 'Fernando'}})
+> db.livros.update({titulo: 'PHP e MySQL'}, {$set: {valor: 175.00}})
+> db.livros.update({autor: 'Jorge'}, {$set: {titulo: 'Curso Completo de NodeJS'}})
+> db.livros.update({valor: {$lte: 25.00}}, {$set: {valor: 27.00}}, {multi: true})
+> db.livros.remove({autor: 'João'})
+> db.livros.remove({valor: {$gt: 280.00}})
+> db.livros.remove({valor: {$lt: 30.00}})
+
