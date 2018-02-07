@@ -16,7 +16,7 @@ console.log('Servidor HTTP esta escutando na porta: ' + port);
 
 let db = new mongodb.Db(
 	'instagram',
-	new mongodb.Server('localhost', 27017, {}),
+	new mongodb.Server('192.168.33.10', 27017, {}),
 	{}
 );
 
